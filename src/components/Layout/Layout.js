@@ -4,15 +4,38 @@ import Fragment from '../../Fragment';
 // import classes from '*.module.scss';     Boilerplate automatique
 import classes from './Layout.module.css';
 import Toolbar from '../Navigation/Toolbar/Toolbar';
+import SideDrawer from '../Navigation/SideDrawer/SideDrawer';
 
 
-const layout = (props) => (
-    <Fragment>
-        <Toolbar />
-        <main className={classes.Content}>
-            {props.children}
-        </main>
-    </Fragment>
-);
+class Layout extends React.Component {
+    state = {
+        showSideDrawer: true
+    }
 
-export default layout;
+    sideDrawerClosedHandler = () => {
+        this.setState({showSideDrazer:false});
+    }
+
+    sideDrawerToggleHandler = () => {
+        this.setState((prevState) => {
+            return {showSideDrawer: !prevState.showSideDrawer};
+        });
+    }
+
+    render(){
+        return(    
+            <Fragment>
+                <Toolbar drawerToggleClicked={this.sideDrawerToggleHandler} />
+                <SideDrawer open={this.state.showSideDrawer}
+                            closed={this.sideDrawerClosedHandler}/>
+                <main className={classes.Content}>
+                    {this.props.children}
+                </main>
+            </Fragment>
+        )
+    }
+};
+
+
+
+export default Layout;
