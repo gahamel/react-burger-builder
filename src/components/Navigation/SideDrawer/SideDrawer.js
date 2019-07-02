@@ -6,9 +6,8 @@ import classes from './SideDrawer.module.css';
 import Backdrop from '../../UI/Backdrop/Backdrop';
 import Fragment from '../../../Fragment';
 
-const sideDrawer = (props) => {
-
-    let attachedClasses = [classes.SideDrawer, classes.Close]
+const sideDrawer = ( props ) => {
+    let attachedClasses = [classes.SideDrawer, classes.Close];
     if (props.open) {
         attachedClasses = [classes.SideDrawer, classes.Open];
     }
@@ -16,7 +15,7 @@ const sideDrawer = (props) => {
         <Fragment>
             <Backdrop show={props.open} clicked={props.closed}/>
             <div className={attachedClasses.join(' ')}>
-                <div classeName={classes.Logo}>
+                <div className={classes.Logo}>
                     <Logo />
                 </div>
                 <nav>
@@ -25,6 +24,6 @@ const sideDrawer = (props) => {
             </div>
         </Fragment>
     );
-}
+};
 
 export default sideDrawer;
