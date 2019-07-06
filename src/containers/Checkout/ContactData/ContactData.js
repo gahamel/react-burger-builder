@@ -17,6 +17,7 @@ class ContactData extends React.Component {
     }
 
     orderHandler = (event) => {
+        event.preventDefault();
         this.setState({loading:true});
         const order = {
             ingredients: this.props.ingredients,
